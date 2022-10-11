@@ -17,8 +17,8 @@ public class CurrencyExchangeServiceIntegrationTest {
 
     @BeforeEach
     public void setUp() throws SQLException {
-        eur100 = new Money(100, "USD");
-        usd120 = new Money(100, "EUR");
+        eur100 = new Money(100, "EUR");
+        usd120 = new Money(120, "USD");
         service = new CurrencyExchangeService(ExchangeRateDAO.getInstance());
     }
 

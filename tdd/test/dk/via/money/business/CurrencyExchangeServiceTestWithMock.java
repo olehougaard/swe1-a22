@@ -29,6 +29,6 @@ public class CurrencyExchangeServiceTestWithMock {
         data.expect("EUR", "USD", new ExchangeRate("EUR", "USD", 120));
         Money converted = service.exchange(eur100, "USD");
         assertEquals(usd120, converted);
-        assertTrue(data.validate());
+        assertEquals(true, data.validate());
     }
 }

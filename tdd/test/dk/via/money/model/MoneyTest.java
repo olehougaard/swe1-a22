@@ -19,20 +19,50 @@ public class MoneyTest {
     }
 
     // Zero dollars - amount
+    @Test
+    public void zeroDollarsHaveAnAmountOf0() {
+        assertEquals(0, usd0.getAmount());
+    }
 
     // 100 dollars - amount
+    @Test
+    public void hundredDollarsHaveAnAmountOf100() {
+        assertEquals(100, usd100.getAmount());
+    }
 
     // Zero dollars - currency
-
     // 100 Euro - currency
+    // Let's not bother - too simple
 
     // 100 dollars equals 100 dollars
+    @Test
+    public void hundredDollarsEquals100Dollars() {
+        assertEquals(new Money(100, "USD"), usd100);
+    }
 
     // 100 dollars doesn't equals 100 euros
+    @Test
+    public void hundredDollarsDoesntEqual100Euros() {
+        assertNotEquals(new Money(100, "USD"), eur100);
+    }
 
     // 100 dollars doesn't equal 0 dollars
+    @Test
+    public void hundredDollarsDoesntEqual0Dollars() {
+        assertNotEquals(new Money(100, "USD"), usd0);
+    }
+
+    // 100 dollars doesn't equal "100USD"
+    @Test
+    public void hundredDollarsDoesntEqualString100USD() {
+        assertNotEquals(new Money(100, "USD"), "USD100");
+    }
 
     // 0 dollars equals 0 euro
+    @Test
+    public void zeroDollarsEqualsZeroEuro() {
+        assertEquals(new Money(0, "USD"), new Money(0, "EUR"));
+    }
 
     // 100 dollars + 100 dollars == 200 dollars
 

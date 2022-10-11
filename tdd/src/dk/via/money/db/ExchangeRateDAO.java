@@ -9,7 +9,7 @@ public class ExchangeRateDAO implements ExchangeRateData {
     private static ExchangeRateDAO instance;
 
     private ExchangeRateDAO() throws SQLException {
-        DriverManager.registerDriver(new org.postgresql.Driver());
+//        DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
     public static synchronized ExchangeRateDAO getInstance() throws SQLException {
@@ -27,7 +27,7 @@ public class ExchangeRateDAO implements ExchangeRateData {
             statement.setString(2, toCurrency);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                return new ExchangeRate(fromCurrency, toCurrency, (BigDecimal) rs.getObject(1));
+                return new ExchangeRate(fromCurrency, toCurrency, rs.getDouble(1));
             } else {
                 return null;
             }
