@@ -28,4 +28,22 @@ public final class Money {
         }
         return currency.equals(other.currency) && amount == other.amount;
     }
+
+    public Money add(Money other) {
+        if (!currency.equals(other.currency)) {
+            throw new IllegalArgumentException("Different currencies");
+        }
+        return new Money(amount + other.amount, currency);
+    }
+
+    public Money multiply(double factor) {
+        return new Money(amount * factor, currency);
+    }
+
+    public Money divide(double dividend) {
+        if (dividend == 0) {
+            throw new ArithmeticException("/ by 0");
+        }
+        return new Money(amount / dividend, currency);
+    }
 }

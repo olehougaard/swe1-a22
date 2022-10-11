@@ -65,12 +65,32 @@ public class MoneyTest {
     }
 
     // 100 dollars + 100 dollars == 200 dollars
+    @Test
+    public void hundredDollarsPlusHundredDollarsIs200Dollars() {
+        assertEquals(new Money(200, "USD"), usd100.add(usd100));
+    }
 
     // 100 dollars + 100 euro -> Exception
+    @Test
+    public void hundredDollarsPlusHundredEurosThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> usd100.add(eur100));
+    }
 
     // 100 dollars * .25 == 25 dollars
+    @Test
+    public void hundredDollarsTimesAQuarterIs25Dollars() {
+        assertEquals(new Money(25, "USD"), usd100.multiply(.25));
+    }
 
     // 100 dollars / 4 == 25 dollars
+    @Test
+    public void hundredDollarsDividedBy4Is25Dollars() {
+        assertEquals(new Money(25, "USD"), usd100.divide(4));
+    }
 
     // 100 dollars / 0 -> Exception
+    @Test
+    public void divideByZeroThrowsArithmeticException() {
+        assertThrows(ArithmeticException.class, () -> usd100.divide(0));
+    }
 }
